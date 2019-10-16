@@ -1,0 +1,59 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="LVue.js"></script>
+    <script src="compile.js"></script>
+    <div id="app">
+        <p id="name"></p>
+        <p>{{firstdata}}</p>
+        <p>{{seconddata}}</p>
+        <p>{{thirddata}}</p>
+        <p l-text="seconddata"></p>
+        <button @click="clickEvent">点一哈试试</button>
+        <input type="text" l-model="thirddata">
+    </div>
+    <script>
+        const app = new LVue({
+            el: "#app",
+            data: {
+                firstdata: "have a try",
+                seconddata: "why not",
+                thirddata: "paid will pay",
+                foo:{
+                    bar:"foobar"
+                }
+            },
+            created() {
+                setTimeout(()=>{
+                    this.firstdata = "SetTimeoutChangeFirstData"
+                },1500)
+            },
+            methods: {
+                clickEvent(){
+                    this.thirddata = "ClickChangeThirdData"
+                }
+            },
+        })
+        // app.$data.firstdata = "changeFirstData"
+        // app.$data.foo.bar = "changeFoobar"
+        // var obj = {};
+        // Object.defineProperty(obj,"name",{
+        //     get(){
+        //         return document.getElementById("name").innerHTML
+        //     },
+        //     set(newVal){
+        //         document.getElementById("name").innerHTML = newVal
+        //     }
+        // })
+        // obj.name = "Link"
+    </script>
+</body>
+
+</html>
